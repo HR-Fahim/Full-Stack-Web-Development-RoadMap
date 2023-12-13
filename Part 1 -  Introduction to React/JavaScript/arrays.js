@@ -10,7 +10,7 @@ t.forEach(value => {
 })                    
 
 
-// Array map
+// Array map 
 
 const t2 = [1, 2, 3]
 const tSquared = t2.map(p => p * p)

@@ -26,7 +26,7 @@ function product(a, b) {
   
   const result_using_function = product(2, 6)
   console.log(result_using_function)
-  // result is now 12
+  // result is now 12 
 
 
 
