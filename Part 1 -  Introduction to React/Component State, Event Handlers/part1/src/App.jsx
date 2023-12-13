@@ -13,7 +13,7 @@ const Hello = (props) => {
     return yearNow - props.age
   }
 
-  return (
+  return ( 
     <div>
       <p>
         Hello {props.name}, you are {props.age} years old
