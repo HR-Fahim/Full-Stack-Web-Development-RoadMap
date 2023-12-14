@@ -11,16 +11,11 @@ import { useState } from 'react'
 const App = () => {
   const [ counter] = useState(0)
 
-
-  const handleClick = () => {
-    console.log('clicked')
-  }
-
   return (
     <div>
       <div>{counter}</div>
 
-      <button onClick={handleClick}>
+      <button onClick={() => console.log('clicked')}>
         plus
       </button>
     </div>
