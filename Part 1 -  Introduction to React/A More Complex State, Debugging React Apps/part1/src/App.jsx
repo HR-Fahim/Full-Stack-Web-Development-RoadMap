@@ -8,28 +8,33 @@ import './App.css'
 
 import { useState } from 'react'
 
+// This is the right place to define a component
+const Button = (props) => (
+  <button onClick={props.handleClick}>
+    {props.text}
+  </button>
+)
+
 const App = () => {
   const [value, setValue] = useState(10)
 
-  const setToValue = (newValue) => {
+  const setToValue = newValue => {
     console.log('value now', newValue)
     setValue(newValue)
   }
 
+  // Do not define components inside another component
+
+  const Display = props => <div>{props.value}</div>
+
   return (
     <div>
-      {value}
+      <Display value={value} />
       <Button handleClick={() => setToValue(1000)} text="thousand" />
       <Button handleClick={() => setToValue(0)} text="reset" />
       <Button handleClick={() => setToValue(value + 1)} text="increment" />
     </div>
   )
 }
-
-const Button = (props) => (
-  <button onClick={props.handleClick}>
-    {props.text}
-  </button>
-)
 
 export default App
