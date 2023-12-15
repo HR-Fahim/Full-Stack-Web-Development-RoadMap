@@ -15,7 +15,7 @@ const Note = ({ note }) => {
 
 const App = (props) => {
   const [notes] = useState(props.notes)
-  const [showAll] = useState(true)
+  const [showAll, setShowAll] = useState(true)
   const [newNote, setNewNote] = useState(
     'a new note...'
   ) 
@@ -37,6 +37,11 @@ const App = (props) => {
   return (
     <div>
       <h1>Notes</h1>
+      <div>
+        <button onClick={() => setShowAll(!showAll)}>
+          show {showAll ? 'important' : 'all' }
+        </button>
+      </div>
       <ul>
         {notesToShow.map(note =>
           <Note key={note.id} note={note} />
