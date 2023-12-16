@@ -1,11 +1,13 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
 
 // import React from 'react';
+
+import axios from 'axios'
 
 const Note = ({ note }) => {
   return (
@@ -13,12 +15,24 @@ const Note = ({ note }) => {
   )
 }
 
-const App = (props) => {
-  const [notes] = useState(props.notes)
+const App = () => {
+  const [notes, setNotes] = useState([])
+  // const [notes] = useState(props.notes)
   const [showAll, setShowAll] = useState(true)
   const [newNote, setNewNote] = useState(
     'a new note...'
   ) 
+
+  useEffect(() => {
+    console.log('effect')
+    axios
+      .get('http://localhost:3001/notes')
+      .then(response => {
+        console.log('promise fulfilled')
+        setNotes(response.data)
+      })
+  }, [])
+  console.log('render', notes.length, 'notes')
 
   const addNote = (event) => {
     event.preventDefault()
