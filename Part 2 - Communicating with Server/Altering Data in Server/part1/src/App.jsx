@@ -44,8 +44,8 @@ const App = () => {
 
     noteService
       .getAll()
-      .then(initialNotes => {
-        setNotes(initialNotes)
+      .then(response => {
+        setNotes(response.data)
       })
   }
 
