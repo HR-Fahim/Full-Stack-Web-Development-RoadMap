@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 // import viteLogo from '/vite.svg'
 import './App.css'
 
-import noteService from '/services/notes.js'
+import noteService from './services/notes.js'
 
 // import React from 'react';
 
