@@ -1,0 +1,7 @@
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "content": "Ensure that every component has a unique key prop.",
+  "important": true
+}
