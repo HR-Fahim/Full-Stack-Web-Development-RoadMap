@@ -8,6 +8,24 @@ app.use(cors())
 
 app.use(express.static('dist'))
 
+const mongoose = require('mongoose')
+
+const password = process.argv[2]
+
+// DO NOT SAVE YOUR PASSWORD TO GITHUB!!
+const url =
+  `mongodb+srv://hrfprofessional:${password}@cluster0.fdhuvlk.mongodb.net/noteApp?retryWrites=true&w=majority`
+
+mongoose.set('strictQuery',false)
+mongoose.connect(url)
+
+const noteSchema = new mongoose.Schema({
+  content: String,
+  important: Boolean,
+})
+
+const Note = mongoose.model('Note', noteSchema)
+
 let notes = [
   {
     id: 1,
@@ -26,20 +44,22 @@ let notes = [
   }
 ]
 
-app.get('/api/notes/:id', (request, response) => {
-  const id = Number(request.params.id)
-  const note = notes.find(note => note.id === id)
+// app.get('/api/notes/:id', (request, response) => {
+//   const id = Number(request.params.id)
+//   const note = notes.find(note => note.id === id)
   
 
-  if (note) {
-    response.json(note)
-  } else {
-    response.status(404).end()
-  }
-})
+//   if (note) {
+//     response.json(note)
+//   } else {
+//     response.status(404).end()
+//   }
+// })
 
 app.get('/api/notes', (request, response) => {
-  response.json(notes)
+  Note.find({}).then(notes => {
+    response.json(notes)
+  })
 })
 
 const generateId = () => {
