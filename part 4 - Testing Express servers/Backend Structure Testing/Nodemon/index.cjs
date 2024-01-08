@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import Note from './models/note.js';
+import Note from './models/note.cjs';
 
 const app = express();
 app.use(express.json());
@@ -119,8 +119,10 @@ app.listen(PORT, () => {
 });
 
 // const app = require('./app') // the actual Express application
-const config = require('./utils/config')
-const logger = require('./utils/logger')
+// import config from './utils/config.js';
+const logger = require('./utils/logger.cjs')
+
+const config = require('./utils/config.cjs')
 
 app.listen(config.PORT, () => {
   logger.info(`Server running on port ${config.PORT}`)
